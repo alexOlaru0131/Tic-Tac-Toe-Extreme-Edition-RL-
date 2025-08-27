@@ -23,7 +23,6 @@ class Agent_Q_Learning:
                 self.epsilon = initial_epsilon
                 self.epsilon_decay = epsilon_decay
                 self.final_epsilon = final_epsilon
-                self.training_error = []
                 
         # -> getting the observation as a tuple for future processing
         def _to_key(self, obs: np.ndarray) -> tuple:
@@ -59,7 +58,6 @@ class Agent_Q_Learning:
                 td_error = target - self.q_values[observation][action]
 
                 self.q_values[observation][action] += self.learning_rate * td_error
-                self.training_error.append(td_error)
         
         # -> it's a function that makes the agent less explorative and more conversative 
         # (the epsilon is decreased by epsilon decay parameter)

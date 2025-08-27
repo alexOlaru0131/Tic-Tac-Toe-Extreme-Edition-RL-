@@ -66,11 +66,11 @@ class Agent_SARSA:
                         (
                                 reward + self.discount_factor * self.q_values[next_observation, next_action] - self.q_values[observation, action]
                         )
-                # self.training_error.append(td_error)
         
         # -> it's a function that makes the agent less explorative and more conversative 
         # (the epsilon is decreased by epsilon decay parameter)
         def decay_epsilon(self):
                 self.epsilon = max(self.final_epsilon, self.epsilon - self.epsilon_decay)
+
 ###### END AGENT ######
                 

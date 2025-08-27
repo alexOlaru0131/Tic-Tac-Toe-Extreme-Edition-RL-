@@ -4,7 +4,7 @@
 
 ###### IMPORTS ######
 from imports import *
-from variables import *
+from global_variables import *
 ###### END IMPORTS ######
 
 ###### ENVIRONMENT CLASS ######
@@ -71,39 +71,33 @@ class TicTacToe(gym.Env):
         # -> if you return more parameters as a tuple, array or anything else it might be unstable
         # -> input parameters must be the same, be careful when giving a tuple as an argument (in my case I mapped my input to ints and shared it)
         def step(self, action):
+
                 action_p1, action_p2 = map(int, action)
 
-                if action_p1 != 9:
-                        pos1 = self._action[action_p1]
-                if action_p2 != 9:
-                        pos2 = self._action[action_p2]
+                pos1 = self._action[action_p1]
+                pos2 = self._action[action_p2]
                 reward = 0
                 truncated = False
                 terminated = False
-                line = "none"
 
-                # -> if same action go to the next step
-                if action_p1 == action_p2:
-                        obs = self._get_obs()
-                        return obs, 0, terminated, truncated, {}
-                if action_p1 != 9:
-                        if self.action_table[pos1] == 0:
-                                self.action_table[pos1] = 1
-                if action_p2 != 9:
-                        if self.action_table[pos2] == 0:
-                                self.action_table[pos2] = -1
+                if self.action_table[pos1] == 0:
+                        self.action_table[pos1] = X_SIGN
+                if self.action_table[pos2] == 0:
+                        self.action_table[pos2] = O_SIGN
                 
                 # -> if there is a winner end the game
-                # print(win)
                 if p1_win.is_set():
                         terminated = True
                         reward = X_SIGN
                         p1_win.clear()
 
-                if p2_win.is_set():
+                elif p2_win.is_set():
                         terminated = True
                         reward = O_SIGN
                         p2_win.clear()
+
+                else:
+                        reward = 0
 
                 # -> if the number of turns is too much end the simulation
                 ## FINISH OR FIND OUT IF IT UPDATES
@@ -112,7 +106,7 @@ class TicTacToe(gym.Env):
                 obs = self._get_obs()
 
                 # -> return observation, reward, terminated, truncated, info
-                return obs, reward, terminated, truncated, {"line": line}
+                return obs, reward, terminated, truncated, {}
 ###### END ENVIRONMENT CLASS ######
 
 ###### REGISTER ENVIRONMENT ######

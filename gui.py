@@ -3,6 +3,7 @@
 
 ###### IMPORTS ######
 from imports import *
+from global_variables import *
 ###### END IMPORTS ######
 
 ###### GUI ######
@@ -74,10 +75,10 @@ class GUI:
                 pygame.font.init()
 
                 font = pygame.font.SysFont('Comic Sans MS', 20)
-                if winner == 1:
+                if winner == X_SIGN:
                         text_surface = font.render('P1 won', False, self.WHITE)
                         self.display.blit(text_surface, (120,50))
-                elif winner == -1:
+                elif winner == O_SIGN:
                         text_surface = font.render('P2 won', False, self.WHITE)
                         self.display.blit(text_surface, (120,50))
                 else:

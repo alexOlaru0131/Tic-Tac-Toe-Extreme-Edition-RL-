@@ -2,7 +2,7 @@
 
 ###### IMPORTS ######
 from imports import *
-from variables import *
+from global_variables import *
 ###### END IMPORTS ######
 
 ###### DEFINES ######
@@ -185,6 +185,7 @@ def process_game_thread(action_table):
 
                 monitor.acquire()
                 time.sleep(0.1)
+                line_winner['line'] = 'none'
 
                 if round_done.is_set() == True:
                         action_table *= 0
@@ -246,8 +247,6 @@ def process_game_thread(action_table):
                                                  (int(identified_x[2][i]), int(identified_x[1][i])), (255, 255, 255), 5)
                                 except:
                                         continue
-                
-                print(identified_x)
                 
                 reward, line_winner['line'] = winner(action_table)
 
