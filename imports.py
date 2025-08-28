@@ -14,7 +14,7 @@ import cv2
 import numpy as np
 from collections import defaultdict
 from typing import Optional
-from tqdm import tqdm # looking professional B)
+from tqdm import tqdm # looking professional B) and seeing progress
 from matplotlib import pyplot as plt
 import pygame
 from pygame.locals import *

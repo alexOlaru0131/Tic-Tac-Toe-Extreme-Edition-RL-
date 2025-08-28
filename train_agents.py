@@ -8,7 +8,12 @@ from agent_sarsa import *
 
 def train(env, gui, n_episodes, agent_1, agent_2):
 
-        total_reward = reward_p1 = reward_p2 = total_reward_p1 = total_reward_p2 = draws =  0
+        total_reward = 0
+        reward_p1 = 0
+        reward_p2 = 0
+        total_reward_p1 = 0
+        total_reward_p2 = 0
+        draws =  0
 
         for episode in tqdm(range(n_episodes)):
                 observation, _ = env.reset()
@@ -19,6 +24,7 @@ def train(env, gui, n_episodes, agent_1, agent_2):
 
                 while not done:
                         monitor.acquire()
+                        round_done.clear()
                         count = 0
                         time.sleep(0.1)
 

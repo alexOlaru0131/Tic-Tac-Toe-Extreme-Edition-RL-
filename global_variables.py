@@ -28,7 +28,6 @@ actions_p = {
 }
 
 # TRAIN VARIABLES //
-n_episodes = 1_00
-start_epsilon = 1.
-epsilon_decay = start_epsilon / (n_episodes / 2)
-final_epsilon = .00001
+n_episodes = 1_000
+start_epsilon = 1
+final_epsilon = 0.00001

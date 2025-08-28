@@ -250,6 +250,8 @@ def process_game_thread(action_table):
                 
                 reward, line_winner['line'] = winner(action_table)
 
+                p1_win.clear()
+                p2_win.clear()
                 if reward == X_SIGN:
                         p1_win.set()
 
