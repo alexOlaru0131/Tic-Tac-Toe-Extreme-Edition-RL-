@@ -1,1 +1,3 @@
-# Tic-Tac-Toe-Extreme-Edition-RL-
+# Tic-Tac-Toe: Extreme Edition (RL)
+
+> README UNDER DEVELOPMENT
